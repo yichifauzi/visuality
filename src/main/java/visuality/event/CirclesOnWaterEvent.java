@@ -39,8 +39,7 @@ public class CirclesOnWaterEvent {
 			if(!(biome.getPrecipitation(topPos).equals(Biome.Precipitation.RAIN)) || !(biome.doesNotSnow(player.getSteppingPos()))) continue;
 			if(world.getBlockState(topPos.down()).isOf(Blocks.WATER) && world.getBlockState(topPos).isAir()) {
 				if(world.getFluidState(topPos.down()).getLevel() == 8) {
-					int color = config.waterCircles.colored ? biome.getWaterColor() : 0;
-					ParticleUtils.add(world, VisualityParticles.WATER_CIRCLE, topPos.getX() + random.nextDouble(), topPos.getY() + 0.05D, topPos.getZ() + random.nextDouble(), color);
+					ParticleUtils.add(world, VisualityParticles.WATER_CIRCLE, topPos.getX() + random.nextDouble(), topPos.getY() + 0.05D, topPos.getZ() + random.nextDouble());
 				}
 			}
 		}
