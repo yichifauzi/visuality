@@ -1,12 +1,16 @@
 package visuality.particle;
 
+import net.minecraft.client.color.world.BiomeColors;
 import net.minecraft.client.particle.*;
 import net.minecraft.client.render.Camera;
 import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.world.ClientWorld;
 import net.minecraft.particle.DefaultParticleType;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.ColorHelper;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
+import visuality.VisualityMod;
 import org.joml.Quaternionf;
 import org.joml.Vector3f;
 
@@ -14,20 +18,21 @@ public class WaterCircleParticle extends SpriteBillboardParticle {
 	private final SpriteProvider sprites;
 	private static final Quaternionf QUATERNION = new Quaternionf(0F, -0.7F, 0.7F, 0F);
 
-	private WaterCircleParticle(ClientWorld world, double x, double y, double z, double color, SpriteProvider sprites) {
+	private WaterCircleParticle(ClientWorld world, double x, double y, double z, SpriteProvider sprites) {
 		super(world, x, y, z, 0, 0, 0);
 		this.maxAge = 5 + this.random.nextInt(3);
 		this.setVelocity(0D, 0D, 0D);
-		if(color != 0) this.setColor((int) color);
+		if (VisualityMod.config.waterCircles.colored) this.setColor();
 		this.scale(2F + (float) this.random.nextInt(11) / 10);
 		this.sprites = sprites;
 		this.setSpriteForAge(sprites);
 	}
 
-	public void setColor(int rgbHex) {
-		float red = (float) ((rgbHex & 16711680) >> 16) / 255.0F;
-		float green = (float) ((rgbHex & '\uff00') >> 8) / 255.0F;
-		float blue = (float) ((rgbHex & 255)) / 255.0F;
+	public void setColor() {
+		var waterColor = BiomeColors.getWaterColor(this.world, BlockPos.ofFloored(x, y, z));
+		var red = ColorHelper.Argb.getRed(waterColor) / 255.0f;
+		var green = ColorHelper.Argb.getGreen(waterColor) / 255.0f;
+		var blue = ColorHelper.Argb.getBlue(waterColor) / 255.0f;
 		this.setColor(red, green, blue);
 	}
 
@@ -79,7 +84,7 @@ public class WaterCircleParticle extends SpriteBillboardParticle {
 
 	public record Factory(SpriteProvider sprites) implements ParticleFactory<DefaultParticleType> {
 		public Particle createParticle(DefaultParticleType type, ClientWorld world, double x, double y, double z, double velX, double velY, double velZ) {
-			return new WaterCircleParticle(world, x, y, z, velX, sprites);
+			return new WaterCircleParticle(world, x, y, z, sprites);
 		}
 	}
 }
