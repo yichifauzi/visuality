@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "visuality",
-  "version": "dev",
+  "version": "${version}",
   "name": "Visuality",
   "description": "Little visual improvements by adding a bunch of new particles.",
   "authors": [
@@ -37,7 +37,7 @@
     "fabricloader": "*",
     "fabric-api": "*",
     "cloth-config": "*",
-    "minecraft": ">=1.20.3 <1.21",
+    "minecraft": "${minecraft_version_range}",
     "java": ">=17"
   }
 }
