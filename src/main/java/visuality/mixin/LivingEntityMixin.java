@@ -61,9 +61,9 @@ public abstract class LivingEntityMixin extends Entity {
 					ticksDelay = 10;
 					Item item = attacker.getMainHandStack().getItem();
 					int count = this.random.nextInt(2);
-					if(item instanceof SwordItem sword) count = (int)sword.getAttackDamage() / 2;
+					if(item instanceof SwordItem sword) count = (int)sword.getMaterial().getAttackDamage() / 2;
 					else if(item instanceof MiningToolItem tool)
-						count = (int)tool.getAttackDamage() / 2;
+						count = (int)tool.getMaterial().getAttackDamage() / 2;
 					spawnHitParticles(entry.particle(), count);
 				}
 			});

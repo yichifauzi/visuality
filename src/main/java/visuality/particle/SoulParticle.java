@@ -4,7 +4,7 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.particle.*;
 import net.minecraft.client.world.ClientWorld;
-import net.minecraft.particle.DefaultParticleType;
+import net.minecraft.particle.SimpleParticleType;
 
 public class SoulParticle extends SpriteBillboardParticle {
 	private final SpriteProvider sprites;
@@ -34,8 +34,8 @@ public class SoulParticle extends SpriteBillboardParticle {
 	}
 
 	@Environment(EnvType.CLIENT)
-	public record Factory(SpriteProvider sprites) implements ParticleFactory<DefaultParticleType> {
-		public Particle createParticle(DefaultParticleType type, ClientWorld world, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed) {
+	public record Factory(SpriteProvider sprites) implements ParticleFactory<SimpleParticleType> {
+		public Particle createParticle(SimpleParticleType type, ClientWorld world, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed) {
 			return new SoulParticle(world, x, y, z, xSpeed, ySpeed, zSpeed, sprites);
 		}
 	}

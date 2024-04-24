@@ -2,7 +2,7 @@ package visuality.particle;
 
 import net.minecraft.client.particle.*;
 import net.minecraft.client.world.ClientWorld;
-import net.minecraft.particle.DefaultParticleType;
+import net.minecraft.particle.SimpleParticleType;
 
 public class SolidFallingParticle extends AbstractSlowingParticle {
 
@@ -39,8 +39,8 @@ public class SolidFallingParticle extends AbstractSlowingParticle {
 		return ParticleTextureSheet.PARTICLE_SHEET_TRANSLUCENT;
 	}
 
-	public record Factory(SpriteProvider sprites) implements ParticleFactory<DefaultParticleType> {
-		public Particle createParticle(DefaultParticleType type, ClientWorld world, double x, double y, double z, double velX, double velY, double velZ) {
+	public record Factory(SpriteProvider sprites) implements ParticleFactory<SimpleParticleType> {
+		public Particle createParticle(SimpleParticleType type, ClientWorld world, double x, double y, double z, double velX, double velY, double velZ) {
 			SolidFallingParticle particle = new SolidFallingParticle(world, x, y, z, velX, velY, velZ);
 			particle.setSpriteForAge(sprites);
 			return particle;

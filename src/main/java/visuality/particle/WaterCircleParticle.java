@@ -5,7 +5,7 @@ import net.minecraft.client.particle.*;
 import net.minecraft.client.render.Camera;
 import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.world.ClientWorld;
-import net.minecraft.particle.DefaultParticleType;
+import net.minecraft.particle.SimpleParticleType;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.ColorHelper;
 import net.minecraft.util.math.MathHelper;
@@ -82,8 +82,8 @@ public class WaterCircleParticle extends SpriteBillboardParticle {
 		return ParticleTextureSheet.PARTICLE_SHEET_TRANSLUCENT;
 	}
 
-	public record Factory(SpriteProvider sprites) implements ParticleFactory<DefaultParticleType> {
-		public Particle createParticle(DefaultParticleType type, ClientWorld world, double x, double y, double z, double velX, double velY, double velZ) {
+	public record Factory(SpriteProvider sprites) implements ParticleFactory<SimpleParticleType> {
+		public Particle createParticle(SimpleParticleType type, ClientWorld world, double x, double y, double z, double velX, double velY, double velZ) {
 			return new WaterCircleParticle(world, x, y, z, sprites);
 		}
 	}

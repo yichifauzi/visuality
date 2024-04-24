@@ -2,7 +2,7 @@ package visuality.particle;
 
 import net.minecraft.client.particle.*;
 import net.minecraft.client.world.ClientWorld;
-import net.minecraft.particle.DefaultParticleType;
+import net.minecraft.particle.SimpleParticleType;
 
 public class SlimeParticle extends SpriteBillboardParticle {
 
@@ -43,8 +43,8 @@ public class SlimeParticle extends SpriteBillboardParticle {
 		return ParticleTextureSheet.PARTICLE_SHEET_TRANSLUCENT;
 	}
 
-	public record Factory(SpriteProvider sprites) implements ParticleFactory<DefaultParticleType> {
-		public Particle createParticle(DefaultParticleType simpleParticleType, ClientWorld world, double x, double y, double z, double velX, double velY, double velZ) {
+	public record Factory(SpriteProvider sprites) implements ParticleFactory<SimpleParticleType> {
+		public Particle createParticle(SimpleParticleType simpleParticleType, ClientWorld world, double x, double y, double z, double velX, double velY, double velZ) {
 			SlimeParticle particle = new SlimeParticle(world, x, y, z, velX, velY);
 			particle.setSprite(sprites.getSprite(world.random));
 			return particle;

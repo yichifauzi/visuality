@@ -2,7 +2,7 @@ package visuality.particle;
 
 import net.minecraft.client.particle.*;
 import net.minecraft.client.world.ClientWorld;
-import net.minecraft.particle.DefaultParticleType;
+import net.minecraft.particle.SimpleParticleType;
 
 public class SparkleParticle extends SpriteBillboardParticle {
 	private final SpriteProvider sprites;
@@ -36,8 +36,8 @@ public class SparkleParticle extends SpriteBillboardParticle {
 		return 15728880;
 	}
 
-	public record Factory(SpriteProvider sprites) implements ParticleFactory<DefaultParticleType> {
-		public Particle createParticle(DefaultParticleType type, ClientWorld world, double x, double y, double z, double velX, double velY, double velZ) {
+	public record Factory(SpriteProvider sprites) implements ParticleFactory<SimpleParticleType> {
+		public Particle createParticle(SimpleParticleType type, ClientWorld world, double x, double y, double z, double velX, double velY, double velZ) {
 			return new SparkleParticle(world, x, y, z, sprites);
 		}
 	}
