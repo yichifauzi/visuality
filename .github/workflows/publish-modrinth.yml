@@ -34,7 +34,7 @@ jobs:
           files: |
             build/libs/${{ steps.gradle_props.outputs.archives_base_name }}-${{ github.event.release.tag_name }}.jar
             build/libs/${{ steps.gradle_props.outputs.archives_base_name }}-${{ github.event.release.tag_name }}-sources.jar
-            
+
           version: ${{ github.event.release.tag_name }}
 
           version-type: beta
@@ -44,7 +44,7 @@ jobs:
 
           game-versions: ${{ steps.gradle_props.outputs.minecraft_version_range }}
           game-version-filter: releases
-          
+
           dependencies: |
             fabric-api
             cloth-config
@@ -55,3 +55,10 @@ jobs:
           retry-attempts: 2
           retry-delay: 10000
           fail-mode: skip
+
+      - name: Hit mod update webhook
+        uses: fjogeleit/http-request-action@v1
+        with:
+          url: ${{ secrets.MOD_UPDATE_WEBHOOK }}
+          method: 'GET'
+          preventFailureOnNoResponse: 'true'
