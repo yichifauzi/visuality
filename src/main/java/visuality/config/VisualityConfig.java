@@ -1,5 +1,7 @@
 package visuality.config;
 
+import net.minecraft.text.TextColor;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,6 +24,7 @@ public class VisualityConfig {
 			"minecraft:deepslate_emerald_ore"));
 
 	public boolean slimeEnabled = true;
+	public TextColor slimeColor = TextColor.fromRgb(8978297);
 	public boolean chargeEnabled = true;
 	public boolean sparkleEnabled = true;
 	public boolean soulEnabled = true;

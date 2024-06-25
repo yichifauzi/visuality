@@ -3,6 +3,7 @@
   "config.visuality.title": "Configuration de la Visibilité",
   "config.visuality.general": "Général",
   "config.visuality.option.slime": "Blobs de Slime Activés",
+  "config.visuality.option.slime.color": "Slime Blobs Color",
   "config.visuality.option.charge": "Particules de Charge Activées",
   "config.visuality.option.sparkle": "Particules d'Étincelle Activées",
   "config.visuality.option.soul": "Particules d'Âme Activées",

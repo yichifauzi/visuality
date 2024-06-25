@@ -3,6 +3,7 @@
   "config.visuality.title": "Configuración de Visuality",
   "config.visuality.general": "General",
   "config.visuality.option.slime": "Salpicado de Slime activado",
+  "config.visuality.option.slime.color": "Slime Blobs Color",
   "config.visuality.option.charge": "Charge Particle Enabled",
   "config.visuality.option.sparkle": "Partícula de Destello Activada",
   "config.visuality.option.soul": "Partícula de Alma Activada",

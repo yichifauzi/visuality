@@ -9,6 +9,7 @@ import me.shedaniel.clothconfig2.api.ConfigCategory;
 import me.shedaniel.clothconfig2.api.ConfigEntryBuilder;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.text.Text;
+import net.minecraft.text.TextColor;
 import visuality.VisualityMod;
 import visuality.registry.HitParticleRegistry;
 import visuality.registry.ShinyArmorRegistry;
@@ -34,6 +35,11 @@ public class VisualityClothConfig extends VisualityConfig implements ConfigData 
 				.setDefaultValue(true)
 				.setSaveConsumer(newValue -> config.slimeEnabled = newValue)
 				.build());
+
+		category.addEntry(entryBuilder.startColorField(text("option.slime.color"), config.slimeColor)
+			.setDefaultValue(TextColor.fromRgb(8978297))
+			.setSaveConsumer(newValue -> config.slimeColor = TextColor.fromRgb(newValue))
+			.build());
 
 		category.addEntry(entryBuilder.startBooleanToggle(text("option.charge"), config.chargeEnabled)
 				.setDefaultValue(true)

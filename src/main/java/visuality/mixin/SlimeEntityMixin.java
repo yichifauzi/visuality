@@ -16,7 +16,6 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 import visuality.VisualityMod;
 import visuality.registry.VisualityParticles;
 import visuality.util.ParticleUtils;
-import visuality.util.SlimeColors;
 
 @Mixin(SlimeEntity.class)
 public abstract class SlimeEntityMixin extends MobEntity implements Monster {
@@ -41,13 +40,13 @@ public abstract class SlimeEntityMixin extends MobEntity implements Monster {
 	@Unique
 	private void spawnSlimeParticle(double x, double y, double z) {
 		if(getDataTracker().get(SLIME_SIZE) == 1) {
-			ParticleUtils.add(this.getWorld(), VisualityParticles.SMALL_SLIME_BLOB, x, y, z, SlimeColors.VANILLA, 1.0D);
+			ParticleUtils.add(this.getWorld(), VisualityParticles.SMALL_SLIME_BLOB, x, y, z, VisualityMod.config.slimeColor.getRgb(), 1.0D);
 		}
 		else if(getDataTracker().get(SLIME_SIZE) == 2) {
-			ParticleUtils.add(this.getWorld(), VisualityParticles.MEDIUM_SLIME_BLOB, x, y, z, SlimeColors.VANILLA, 1.0D);
+			ParticleUtils.add(this.getWorld(), VisualityParticles.MEDIUM_SLIME_BLOB, x, y, z, VisualityMod.config.slimeColor.getRgb(), 1.0D);
 		}
 		else {
-			ParticleUtils.add(this.getWorld(), VisualityParticles.BIG_SLIME_BLOB, x, y, z, SlimeColors.VANILLA, 2.0D);
+			ParticleUtils.add(this.getWorld(), VisualityParticles.BIG_SLIME_BLOB, x, y, z, VisualityMod.config.slimeColor.getRgb(), 2.0D);
 		}
 	}
 
